@@ -21,7 +21,7 @@ jQuery(document).ready(function()
     cargarserviciosadministrador();
     cargartalleresadministrador(0);
    
-
+    
     jQuery('#localidadnueva').keyup(function() {
       $(this).val($(this).val().toUpperCase());
     });
@@ -191,7 +191,7 @@ jQuery(document).ready(function()
   });
 
 
-  $("#btnasignarturno").click(asignarorden)
+  
 
 ////------------------botones con funciones de ajax-------------------
 
@@ -661,6 +661,8 @@ function generarordenservicio($sid,$ob)
 
             });
             $("#dominioserv").val(respuesta[0].dominio)
+            $("#vidservicio").val(respuesta[0].vid)
+  
         }
         
         
@@ -673,36 +675,22 @@ function asignarorden(){
   $sid=$("#asignarturnosolicitudnro").text();
   var $hora=$("#horasolicitudorden").val();
   var $fecha=$("#fechasolicitudorden").val();
-  var $vid;
-  var $tid;
+  var $vid= $("#vidservicio").val();
   var $select=[];
   var $observacion=$("#tallerobservacioneclientesolicitud").val()
+  $.each($("input[name='checkservicioserviciosorden']:checked"), function(){            
+    $select.push($(this).val());
+  });
+  console.log($sid, $vid, $fecha, $hora, $select, $observacion)
     $.ajax({
       url: "../clases/tabla.php",
       method: "GET",
       async: true,
-      data: {funcion: "cargarordenservicio",sid:$sid},
-      dataType: "json",
-      success: function(respuesta) {     
-          if(respuesta != null){
-          $vid=respuesta[0].vid;
-          $tid=respuesta[0].tid    
-          }
-          $.each($("input[name='checkservicioserviciosorden']:checked"), function(){            
-            $select.push($(this).val());
-          });
-        }
-        
-    });
-
-    $.ajax({
-      url: "../clases/tabla.php",
-      method: "GET",
-      async: true,
-      data: {funcion: "asignarturno", sid:$sid, vid:$vid, tid:$tid, fecha:$fecha, hora:$hora, select:$select, observacion:$observacion},
+      data: {funcion: "asignarturno", sid:$sid, vid:$vid, fecha:$fecha, hora:$hora, select:$select, observacion:$observacion},
       dataType: "json",
       success: function(respuesta) {  
         if(respuesta){
+          console.log("entro3");  
           swal({
             title: "¡Se generado la orden con exito!",
             text: " el Turno para la solicitud "+$sid,

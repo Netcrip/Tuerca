@@ -132,6 +132,10 @@
            <h5 id="asignarturnosolicitudnro"> NNN</h5>
           <div class="col-md-12 col-12">
             <form action="">
+            <div class="form-group">
+                <label for="vidservicio">Id:</label>
+                <input type="text" class="form-control" disabled  placeholder="AF-352-LS" id="vidservicio"> 
+              </div>
               <div class="form-group">
                 <label for="dominioserv">Dimonio:</label>
                 <input type="text" class="form-control" disabled  placeholder="AF-352-LS" id="dominioserv"> 
@@ -165,7 +169,7 @@
         </div>
           <div class="modal-footer modal-footer-uniform">
           <button type="button" class="btn btn-bold btn-pure btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" id="btnsolicitarturno"class="btn btn-bold btn-pure btn-primary float-right">Asignar Turno</button>
+          <button type="button" id="btnasignarturno" onclick="asignarorden()" class="btn btn-bold btn-pure btn-primary float-right">Asignar Turno</button>
         </div>
       </div>
     </div>

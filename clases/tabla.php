@@ -348,16 +348,24 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
         case 'asignarturno':
             if(in_array(23,$permisos)){
                 try {
+                    $uid=$_SESSION['uid'];
+                    $db   = getDB();
+                    $stmt0 = $db->prepare("select `taller-usuario`.tid from `taller-usuario`
+                    inner join talleres on talleres.tid=`taller-usuario`.tid 
+                    where `taller-usuario`.uid=:uid");
+                    $stmt0->bindParam("uid", $uid, PDO::PARAM_STR);
+                    $stmt0->execute();
+                    $data= $stmt0->fetchAll(PDO::FETCH_COLUMN);
+                    $tid=$data[0]; 
+                    
                     $sid=$_GET['sid'];
                     $vid=$_GET['vid'];
-                    $tid=$_GET['tid'];
                     $fecha=$_GET['fecha'];
                     $hora=$_GET['hora'];
                     $select=$_GET['select'];
                     $obs=$_GET['observacion'];
-                    $db   = getDB();
                     $stmt = $db->prepare("insert into ordenes (vid,tid,fecha,horario) values (:vid,:tid,:fecha,:horario);");
-                    $stmt->bindParam("vid", $tid, PDO::PARAM_STR);
+                    $stmt->bindParam("vid", $vid, PDO::PARAM_STR);
                     $stmt->bindParam("tid", $tid, PDO::PARAM_STR);
                     $stmt->bindParam("fecha", $fecha, PDO::PARAM_STR);
                     $stmt->bindParam("horario", $hora, PDO::PARAM_STR);
