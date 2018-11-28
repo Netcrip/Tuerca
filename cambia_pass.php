@@ -24,8 +24,7 @@
 	<head>
 		<?php include("head.php") ?>
 		<title>Cambiar Password</title>
-		
-		<link rel="stylesheet" href="css/bootstrap.min.css" >
+
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css" >
 		<script src="js/bootstrap.min.js" ></script>
 		
@@ -42,7 +41,7 @@
 						<div class="card-title">
 							<h3>Cambiar Password</h3>
 						</div>
-						<div style="float:right; font-size: 100%; position: relative; top:-35px"><a href="index.php">Iniciar Sesi&oacute;n</a></div>
+						
 					</div>     
 					
 					<div style="padding-top:30px" class="card-body" >
@@ -73,8 +72,8 @@
 							</div>
 							
 							<div style="margin-top:10px" class="input-group form-group">
-								<div class="col-md-offset-9 col-md-3">
-									<button id="btn-login" type="submit" class="btn btn-success">Modificar</a>
+								<div class="col-12">
+									<button id="btn-login" type="submit" class="btn btn-success btn-block">Modificar</a>
 								</div>
 							</div>   
 						</form>

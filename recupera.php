@@ -7,7 +7,7 @@
 	if(isset($_SESSION["id_usuario"])){
 		header("Location: Taller/index.php");
 	}
-	
+	$mensaje="";
 	$errors = array();
 	
 	if(!empty($_POST))
@@ -32,9 +32,8 @@
 			$cuerpo = "Hola $nombre: <br /><br />Se ha solicitado un reinicio de contrase&ntilde;a. <br/><br/>Para restaurar la contrase&ntilde;a, visita la siguiente direcci&oacute;n: <a href='$url'>$url</a>";
 			
 			if(enviarEmail($email, $nombre, $asunto, $cuerpo)){
-				echo "Hemos enviado un correo electronico a las direcion $email para restablecer tu password.<br />";
-				echo "<a href='login.php' >Iniciar Sesion</a>";
-				exit;
+				$mensaje='<div class="card"><div class="bg-success"><p class="text-white text-justify">'."Hemos enviado un correo electronico a las direcion $email para restablecer tu password.".'</p></div></div>'."<br /><a class='btn' href='login.php' >Iniciar Sesion</a>";
+				 
 			}
 			} else {
 			$errors[] = "La direccion de correo electronico no existe";
@@ -46,7 +45,6 @@
 		<?php include("head.php") ?>
 		<title>Recuperar Password</title>
 		
-		<link rel="stylesheet" href="css/bootstrap.min.css" >
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css" >
 		<script src="js/bootstrap.min.js" ></script>
 	</head>
@@ -62,9 +60,8 @@
 						<div class="card-header">
 							<h3>Recuperar Password</h3>
 						</div>
-						<div style="float:right; font-size: 80%; position: relative; top:-50px"><a href="login.php">Iniciar Sesi&oacute;n</a></div>
 					</div>     
-					
+					<?php echo $mensaje; ?>
 					<div class="card-body" style="padding-top:10px" >
 						
 						<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
@@ -77,8 +74,8 @@
 							</div>
 							
 							<div style="margin-top:10px" class="input-group form-group">
-								<div class="col-md-offset-9 col-md-3">
-									<button id="btn-login" type="submit" class="btn btn-success">Enviar</a>
+								<div class=" col-12">
+									<button id="btn-login" type="submit" class="btn btn-success btn-block">Enviar</a>
 								</div>
 							</div>
 							

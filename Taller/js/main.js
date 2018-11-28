@@ -2400,7 +2400,6 @@ function cambiarpaginador(){
 
 function cargartalleresadministrador($de){
   $desde=(parseInt($de)*100)
-  console.log($de)
   $hasta=(100)
   $.ajax({
     url: "../clases/tabla.php",
