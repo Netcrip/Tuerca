@@ -511,7 +511,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
             }  
         break;
         case 'cumplimentarorden':
-            if(in_array(23,$permisos)){
+            if(in_array(23,$permisos) ){
                 try {
                     $t=$_GET['tipo'];
                     $oid=$_GET['oid'];
@@ -900,7 +900,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
             }
         break;
         case 'updateauto':
-             if(in_array(24,$permisos)){
+             if(in_array(24,$permisos) && (!empty($_GET['ano']))  && (!empty($_GET['motor'])) && (!empty($_GET['chasis']))){
                 try {
                 $codmodelo=$_GET['codmodelo'];
                 $dominio=$_GET['dominio'];
@@ -951,7 +951,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
             }
         break;
         case 'cargarkmcliente':
-            if(in_array(24,$permisos)){
+            if(in_array(24,$permisos)  && (!empty($_GET['km']))  && (!empty($_GET['fecha'])) ){
                 try {
                 $km=$_GET['km'];
                 $vid=$_SESSION['vehiculo'];
@@ -1126,7 +1126,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
             }
         break;
         case 'altanuevotaller':
-            if(in_array(22,$permisos)){
+            if(in_array(22,$permisos) && (!empty($_GET['select'])) && (!empty($_GET['nombre'])) && (!empty($_GET['telefono'])) && (!empty($_GET['email'])) && (!empty($_GET['calle'])) && (!empty($_GET['codloca'])) && (!empty($_GET['uid'])) ){
                 try {
                     $select=$_GET['select'];
                     $nombre=$_GET['nombre'];
@@ -1199,7 +1199,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
             }
         break;
         case 'editarnuevotallersinloca':
-            if(in_array(22,$permisos) && (isset($_GET['nombre']))  && (isset($_GET['telefono']))  && (isset($_GET['email'])) && (isset($_GET['calle'])) && (isset($_GET['nro'])) && (isset($_GET['tid']))&& (isset($_GET['uid'])) ){
+            if(in_array(22,$permisos) && (!empty($_GET['nombre']))  && (!empty($_GET['telefono']))  && (!empty($_GET['email'])) && (!empty($_GET['calle'])) && (isset($_GET['nro'])) && (isset($_GET['tid']))&& (!empty($_GET['uid'])) ){
                 try {
                     $tid=$_GET['tid'];
                     $nombre=$_GET['nombre'];
@@ -1245,7 +1245,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
             }
         break;
         case 'editarnuevotaller':
-            if(in_array(22,$permisos)  && (isset($_GET['nombre']))  && (isset($_GET['telefono']))  && (isset($_GET['codloca']))  && (isset($_GET['email'])) && (isset($_GET['calle'])) && (isset($_GET['nro'])) && (isset($_GET['tid']))&& (isset($_GET['uid']))  ){
+            if(in_array(22,$permisos)  && (!empty($_GET['nombre']))  && (!empty($_GET['telefono']))  && (!empty($_GET['codloca']))  && (!empty($_GET['email'])) && (!empty($_GET['calle'])) && (isset($_GET['nro'])) && (isset($_GET['tid']))&& (!empty($_GET['uid']))  ){
                 try {
                     $tid=$_GET['tid'];
                     $nombre=$_GET['nombre'];

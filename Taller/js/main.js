@@ -296,10 +296,11 @@ $("#editarlocalidadnueva").keyup(editarcargarlocalidad);
 $("#localidadchek").on('click', 'input[name="checkserviciotallersolicitud"]', function() {      
   $('input[name="checkserviciotallersolicitud"]').not(this).prop('checked', false);      
 });
-$("#editarlocalidadchek").on('click', 'input[name="editarcheckserviciotallersolicitud"]', function() {      
+$("#editarlocalidadchek").on('click', 'input[name="editarcheckserviciotallersolicitud"]', function() {     
+  $("#btneditartaller").prop( "disabled", false ); 
   $('input[name="editarcheckserviciotallersolicitud"]').not(this).prop('checked', false);
   $("#grupolocalidadcambiar").prop("hidden",true);
-  $("#btneditartaller").prop("hidden",false);
+  
   $("#editartallerlocalidad").val("");
 });
  
