@@ -31,7 +31,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
                     $data= $stmt0->fetchAll(PDO::FETCH_COLUMN);
                     $tid=$data[0]; 
                     $dominio=$_GET['dominio'];
-                    $fecha=$_GET['fecha'];;
+                    $fecha=$_GET['fecha'];
                     $horario=$_GET['horario'];
                     $obs=$_GET['obs'];
                     $select=$_GET['select'];
@@ -1199,7 +1199,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
             }
         break;
         case 'editarnuevotallersinloca':
-            if(in_array(22,$permisos)){
+            if(in_array(22,$permisos) && (isset($_GET['nombre']))  && (isset($_GET['telefono']))  && (isset($_GET['email'])) && (isset($_GET['calle'])) && (isset($_GET['nro'])) && (isset($_GET['tid']))&& (isset($_GET['uid'])) ){
                 try {
                     $tid=$_GET['tid'];
                     $nombre=$_GET['nombre'];
@@ -1245,7 +1245,7 @@ if(isset($_GET['funcion']) && !empty($_GET['funcion']) && empty($_SESSION['uid']
             }
         break;
         case 'editarnuevotaller':
-            if(in_array(22,$permisos)){
+            if(in_array(22,$permisos)  && (isset($_GET['nombre']))  && (isset($_GET['telefono']))  && (isset($_GET['codloca']))  && (isset($_GET['email'])) && (isset($_GET['calle'])) && (isset($_GET['nro'])) && (isset($_GET['tid']))&& (isset($_GET['uid']))  ){
                 try {
                     $tid=$_GET['tid'];
                     $nombre=$_GET['nombre'];
