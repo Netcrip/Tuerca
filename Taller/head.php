@@ -43,9 +43,8 @@
 	<!-- jQuery UI 1.11.4 -->
 	<script src="assets/vendor_components/jquery-ui/jquery-ui.js"></script>
 	
-	
 	<!-- popper -->
-	<script src="assets/vendor_components/popper/dist/popper.min.js"></script>
+	<script src="assets/vendor_components/bootstrap/assets/js/vendor/popper.min.js"></script>
 	<!-- Bootstrap 4.0-->
 	<script src="assets/vendor_components/bootstrap/dist/js/bootstrap.js"></script>
 	<!-- Morris.js charts -->

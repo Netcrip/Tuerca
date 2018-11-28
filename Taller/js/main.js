@@ -2280,7 +2280,7 @@ function editartalleradmin(){
                             dangerMode: true,
                           })
                           $(".modal .close").click();
-                          cambiarpaginador();
+                     
                                                
                   
                         }
@@ -2309,7 +2309,6 @@ function editartalleradmin(){
                             dangerMode: true,
                           })
                           $(".modal .close").click();
-                          cambiarpaginador();
                                                
                   
                         }
@@ -2401,6 +2400,7 @@ function cambiarpaginador(){
 
 function cargartalleresadministrador($de){
   $desde=(parseInt($de)*100)
+  console.log($de)
   $hasta=(100)
   $.ajax({
     url: "../clases/tabla.php",
@@ -2409,7 +2409,10 @@ function cargartalleresadministrador($de){
     data: {funcion: "talleresadministrador",desde:$desde,hasta:$hasta},
     dataType: "json",
     success: function(respuesta) {
-      
+      if ( $.fn.dataTable.isDataTable( '#talleresadministrador') ) {
+        table = $('#talleresadministrador').DataTable();
+        table.destroy();
+      }
       if(respuesta != null && $.isArray(respuesta)){
         $('#talleresadministradorbody').html("");
         if($.isEmptyObject(respuesta)){
@@ -2420,22 +2423,18 @@ function cargartalleresadministrador($de){
                 $("#talleresadministradorbody").append("<tr><td>" + value.tid + "</td><td>" + value.nombre+ "</td><td><span class='text-muted'>" + value.calle+" "+value.nro+'</td><td>' + value.telefono + '</td><td> <a href="#" data-toggle="modal" data-target="#editar-talleradm" onclick="cargareditartalleradm('+value.tid+')"> <span class="label bg-info"><i class="fa fa-pencil"></i></span></a><a onclick="eliminartalleradm('+value.tid+')"> <span class="label bg-danger"><i class="fa fa-ban"></i></span></a></span></a></td></tr>');
             });
         } 
-        if ( $.fn.dataTable.isDataTable( '#talleresadministrador') ) {
-          table = $('#talleresadministrador').DataTable().destroy();
-          $('#talleresadministrador').DataTable( {
-            dom: 'Bfrtip',
-            language: {
-              url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
-            },
-            buttons: [
-              {extend:'copyHtml5',text:'Copiar'},
-              {extend:'excelHtml5', text:'Exportar a excel'},
-              {extend:'pdfHtml5',text:'Exportar a pdf'},
-              {extend:'print', text:'Imprimir'}
-          ]
-          });
-        }
-            
+            $('#talleresadministrador').DataTable( {
+              dom: 'Bfrtip',
+              language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+              },
+              buttons: [
+                {extend:'copyHtml5',text:'Copiar'},
+                {extend:'excelHtml5', text:'Exportar a excel'},
+                {extend:'pdfHtml5',text:'Exportar a pdf'},
+                {extend:'print', text:'Imprimir'}
+            ]
+            });
         }
       else{
         console.log("salio error")
@@ -2445,6 +2444,7 @@ function cargartalleresadministrador($de){
 
 
 }
+
 
 //sin
  
